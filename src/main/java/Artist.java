@@ -1,13 +1,20 @@
+import jakarta.persistence.GeneratedValue;
+import org.springframework.aot.generate.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 import java.util.UUID;
 
 public class Artist {
-    final private UUID artistId;
+    @GeneratedValue
+    @Id
+    private UUID artistId;
     final private String artistName;
     final private List<Album> albumList;
 
-    public Artist(UUID artistId, String artistName, List<Album> albumList) {
-        this.artistId = artistId;
+    @Autowired
+    public Artist(String artistName, List<Album> albumList) {
         this.artistName = artistName;
         this.albumList = albumList;
     }
